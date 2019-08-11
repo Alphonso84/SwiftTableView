@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+    var family = [String]()
     var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -22,16 +22,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            self.view.addSubview(tableView)
        }
     
+    override func viewWillAppear(_ animated: Bool) {
+        family = ["Alphonso","Chelsea","Danielle","Joseph","Aaron","Ashley"]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        family.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "myCell")
-       // let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+       
+        var cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         
-        cell.textLabel!.text = "Hello World"
-        cell.detailTextLabel?.text = "subtitle"
+       
+             cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "myCell")
+        
+        
+        cell.textLabel!.text = family[indexPath.row]
+        cell.detailTextLabel?.text = "job"
         return cell
     }
     
