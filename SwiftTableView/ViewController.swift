@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
            super.viewDidLoad()
-           tableView = UITableView(frame: CGRect(x: 0, y: 400, width: 400, height: 800))
+        tableView = UITableView(frame: CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height))
            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
            tableView.delegate = self
            tableView.dataSource = self
@@ -27,8 +27,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "myCell")
+       // let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        
         cell.textLabel!.text = "Hello World"
+        cell.detailTextLabel?.text = "subtitle"
         return cell
     }
     
