@@ -14,13 +14,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var tableView: UITableView!
     
     override func viewDidLoad() {
-           super.viewDidLoad()
+        super.viewDidLoad()
         tableView = UITableView(frame: CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height))
-           tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-           tableView.delegate = self
-           tableView.dataSource = self
-           self.view.addSubview(tableView)
-       }
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         family = ["Alphonso","Chelsea","Danielle","Joseph","Aaron","Ashley"]
@@ -31,21 +31,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         var cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        
-       
-             cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "myCell")
-        
-        
+        cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "myCell")
         cell.textLabel!.text = family[indexPath.row]
         cell.detailTextLabel?.text = "job"
         return cell
     }
     
-
-   
-
-
+    
+    
+    
+    
 }
 
